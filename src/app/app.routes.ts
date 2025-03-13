@@ -4,7 +4,8 @@ import { TrabajosComponent } from './pages/trabajos/trabajos.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 
 export const routes: Routes = [
-    { path: "", pathMatch: "full", component: HomeComponent },
+    { path: "", pathMatch: "full", redirectTo: "home" },
+    { path: "home", component: HomeComponent },
     { path: "servicios", component: TrabajosComponent },
     { path: "contacto", component: ContactoComponent}
 ];
