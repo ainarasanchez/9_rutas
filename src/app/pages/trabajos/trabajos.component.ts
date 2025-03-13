@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IServicio } from '../../interfaces/iservicio.interface';
+import { TrabajosService } from '../../services/trabajos.service';
 
 @Component({
   selector: 'app-trabajos',
@@ -9,11 +10,11 @@ import { IServicio } from '../../interfaces/iservicio.interface';
 })
 export class TrabajosComponent {
   arrServicios: IServicio[] = [];
-
-  
+  trabajosServices = inject(TrabajosService);
 
   ngOnInit() {
     //llamar al servicio y llenar nuestro array de servicios
+    this.arrServicios = this.trabajosServices.getAll();
   }
 
 }
