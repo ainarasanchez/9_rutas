@@ -5,3 +5,12 @@
 <main>
   <router-outlet />
 </main>
+
+<!-- Aquí tienes tu evento -->
+<select (change)= "getSelect($event)"> 
+  <!-- Ponemos $ para que no se confunda con una posible variable que se llame event 
+   Lo utilizamos cuando necesitamos recoger información del elemento que lanza el evento -->
+  <option value="">Selecciona una opción</option>
+  <option value="divertido">Angular es divertido</option>
+  <option value="nodivertido">Angular no me gusta</option>
+</select>

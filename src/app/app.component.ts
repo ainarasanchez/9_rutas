@@ -10,4 +10,8 @@ import { NavComponent } from "./shared/nav/nav.component";
 })
 export class AppComponent {
   title = 'rutas';
+
+  getSelect(event: any){
+    console.log(event.target.value);
+  }
 }
