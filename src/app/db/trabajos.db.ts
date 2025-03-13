@@ -1,4 +1,6 @@
-export const servicios = [
+import { IServicio } from "../interfaces/iservicio.interface";
+
+export const SERVICIOS: IServicio[] = [
     {
         id: 1,
         titulo: 'Desarrollo Web',
