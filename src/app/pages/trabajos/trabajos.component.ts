@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IServicio } from '../../interfaces/iservicio.interface';
 
 @Component({
   selector: 'app-trabajos',
@@ -7,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './trabajos.component.css'
 })
 export class TrabajosComponent {
+  arrServicios: IServicio[] = [];
+
+  
+
+  ngOnInit() {
+    //llamar al servicio y llenar nuestro array de servicios
+  }
 
 }
