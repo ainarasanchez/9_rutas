@@ -6,9 +6,12 @@
                 <div class="bg-body-secondary p-3">
                     <h3>{{servicio.titulo}}</h3>
                     <p>{{servicio.descripcion}}</p>
-                    <p>{{servicio.url}}</p>
+                    <a class="btn btn-primary" [routerLink]="['/servicios', servicio.url]">Ver detalle</a>
                 </div>
             </article>
         }
     </div>
 </section>
+
+<!-- ver detalle me lleve a la ruta /servicios/desarrollo-web cuánto más legible y amigable mejor -->
+ <!-- ver detalle me lleve a la ruta /servicios/1 también se podría  -->
