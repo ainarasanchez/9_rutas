@@ -11,4 +11,8 @@ export class TrabajosService {
   getAll(): IServicio[] {
     return this.arrayServicios;
   }
+
+  getByUrl(url: string): IServicio | undefined {
+    return this.arrayServicios.find(servicio => servicio.url === url)
+  }
 }
