@@ -7,6 +7,7 @@ import { SERVICIOS } from '../db/trabajos.db';
 })
 export class TrabajosService {
   private arrayServicios: IServicio[]= SERVICIOS
+  private id: number = 6;
 
   getAll(): IServicio[] {
     return this.arrayServicios;
@@ -14,5 +15,12 @@ export class TrabajosService {
 
   getByUrl(url: string): IServicio | undefined {
     return this.arrayServicios.find(servicio => servicio.url === url)
+  }
+
+  insert(servicio: IServicio): any {
+    servicio.id = this.id
+    this.arrayServicios.push(servicio)
+    this.id++;
+    return { success: 'Insertado correctamente' }
   }
 }
