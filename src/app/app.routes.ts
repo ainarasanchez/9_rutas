@@ -10,6 +10,7 @@ export const routes: Routes = [
     { path: "servicios", component: TrabajosComponent },
     { path: "servicios/:url", component: VistaTrabajoComponent},
     { path: "contacto", component: ContactoComponent},
+    { path: "**", redirectTo: "home" }
 ];
 
 
