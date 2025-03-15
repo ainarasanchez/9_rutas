@@ -1,5 +1,7 @@
-import { Component, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, inject, Inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TrabajosService } from '../../services/trabajos.service';
+import { IServicio } from '../../interfaces/iservicio.interface';
 
 @Component({
   selector: 'app-vista-trabajo',
@@ -11,13 +13,25 @@ export class VistaTrabajoComponent {
   // necesito saber cual es el dato a  cargar, y ese dato lo tengo en la url de mi nevagador. 
 
   // Opción 1. ActivatedRoute => inyectable de libreria de datos
-  activatedRoute = Inject(ActivatedRoute);
+  activatedRoute = inject(ActivatedRoute);
+  router = inject(Router);
+  trabajosServices = inject(TrabajosService);
+  servicio!: IServicio;
 
   ngOnInit() {
   // le voy a preguntar al activatedRoute mis parámetros dinámicos de ruta 
   this.activatedRoute.params.subscribe((params: any) => {
-    console.log(params);
-  
+    let url = params.url
+    // con esta url llamar al servicio y preguntar si en el array de datos BBDD tenemos algo con esa ruta.
+      let response = this.trabajosServices.getByUrl(url)
+      if (response != undefined) {
+        //tengo lo que quiero
+        this.servicio = response;
+        console.log(this.servicio)
+      } else {
+        //redirijo a la pagina 404
+        this.router.navigate(['/error'])
+      }
   })
 
   }
