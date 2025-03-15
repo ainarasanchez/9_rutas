@@ -1,4 +1,4 @@
-import { Component, inject, Inject } from '@angular/core';
+import { Component, inject, Inject, Input, input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TrabajosService } from '../../services/trabajos.service';
 import { IServicio } from '../../interfaces/iservicio.interface';
@@ -12,7 +12,7 @@ import { IServicio } from '../../interfaces/iservicio.interface';
 export class VistaTrabajoComponent {
   // necesito saber cual es el dato a  cargar, y ese dato lo tengo en la url de mi nevagador. 
 
-  // Opción 1. ActivatedRoute => inyectable de libreria de datos
+  /*// Opción 1. ActivatedRoute => inyectable de libreria de datos
   activatedRoute = inject(ActivatedRoute);
   router = inject(Router);
   trabajosServices = inject(TrabajosService);
@@ -33,8 +33,23 @@ export class VistaTrabajoComponent {
         this.router.navigate(['/error'])
       }
   })
+  }*/
 
+  // Opción 2. Input Id
+  router = inject(Router);
+  trabajosServices = inject(TrabajosService);
+  servicio!: IServicio;
+  @Input() url: string = "";
+
+  ngOnInit() {
+    let response = this.trabajosServices.getByUrl(this.url);
+
+    if (!response) {
+      this.router.navigate(['/error'])
+    }
+
+    this.servicio = response!
+    console.log(this.servicio)
   }
-
 
 }
